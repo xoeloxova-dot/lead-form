@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бесплатная консультация</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0A0A0A;
+  --dark2: #111;
+  --dark3: #181818;
+  --border: rgba(255,255,255,0.08);
+  --green: #BFFE00;
+  --green2: #96CC00;
+  --green-dim: rgba(191,254,0,0.07);
+  --text: #F0F0F0;
+  --muted: #666;
+  --radius: 16px;
+}
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Onest', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient background */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(191,254,0,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(191,254,0,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Grid pattern */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+/* ── PAGES ──────────────────── */
+.page { position: relative; z-index: 1; width: 100%; max-width: 520px; }
+.page.hidden { display: none; }
+
+/* ── FORM CARD ──────────────── */
+.card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+}
+
+/* ── HEADER ─────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--green-dim); border: 1px solid rgba(191,254,0,0.2);
+  color: var(--green); font-size: 11px; font-weight: 600;
+  padding: 5px 12px; border-radius: 100px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.badge::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green);
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+h1 span { color: var(--green); }
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+/* ── FORM ───────────────────── */
+.field { margin-bottom: 18px; }
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+input[type="text"] {
+  width: 100%;
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 15px;
+  font-family: 'Onest', sans-serif;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  -webkit-appearance: none;
+}
+input[type="text"]::placeholder { color: #3a3a3a; }
+input[type="text"]:focus {
+  border-color: rgba(191,254,0,0.4);
+  box-shadow: 0 0 0 3px rgba(191,254,0,0.06);
+}
+
+/* ── RADIO BUTTONS ──────────── */
+.radio-group {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+
+.radio-option {
+  flex: 1; min-width: 100px;
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute; opacity: 0; width: 0; height: 0;
+}
+
+.radio-option label {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+  font-size: 13px; font-weight: 500;
+  color: var(--muted);
+  text-transform: none; letter-spacing: 0;
+  margin: 0;
+  transition: all .2s;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.radio-option label .icon { font-size: 16px; }
+
+.radio-option input:checked + label {
+  background: var(--green-dim);
+  border-color: rgba(191,254,0,0.4);
+  color: var(--green);
+}
+
+.radio-option label:hover {
+  border-color: rgba(255,255,255,0.15);
+  color: var(--text);
+}
+
+/* ── CONTACT INPUT (conditional) */
+.contact-field {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .35s ease, opacity .3s ease, margin .3s ease;
+  margin-bottom: 0;
+}
+.contact-field.show {
+  max-height: 90px;
+  opacity: 1;
+  margin-bottom: 18px;
+}
+
+/* ── SUBMIT ─────────────────── */
+.btn-submit {
+  width: 100%;
+  background: var(--green);
+  color: #000;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 16px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: opacity .2s, transform .1s;
+  margin-top: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-submit:hover { opacity: 0.88; }
+.btn-submit:active { transform: scale(0.99); }
+
+.privacy {
+  font-size: 11px;
+  color: #333;
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+/* ── THANK YOU PAGE ─────────── */
+.thanks-card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 56px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.thanks-card::before {
+  content: '';
+  position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+}
+
+.thanks-icon {
+  width: 72px; height: 72px;
+  background: var(--green-dim);
+  border: 1px solid rgba(191,254,0,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 24px;
+  animation: popIn .5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.thanks-card h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 26px; font-weight: 900;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+.thanks-card h2 span { color: var(--green); }
+
+.thanks-text {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 360px;
+  margin: 0 auto 32px;
+}
+
+.thanks-detail {
+  background: var(--green-dim);
+  border: 1px solid rgba(191,254,0,0.15);
+  border-radius: 14px;
+  padding: 18px 22px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  text-align: left;
+  margin-bottom: 28px;
+}
+.thanks-detail strong { color: var(--green); }
+
+/* ── ANIMATIONS ─────────────── */
+.card, .thanks-card {
+  animation: fadeUp .4s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .card, .thanks-card { padding: 32px 24px; }
+  .radio-option label { padding: 11px 12px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ FORM PAGE ═══ -->
+<div class="page" id="page-form">
+  <div class="card">
+    <div class="badge">Бесплатная консультация</div>
+    <h1>Решим вашу<br><span>долговую ситуацию</span></h1>
+    <p class="subtitle">Кредитные каникулы, списание долгов, банкротство — разберёмся вместе. Оставьте заявку, мы свяжемся с вами.</p>
+
+    <form id="lead-form" novalidate>
+
+      <div class="field">
+        <label>Ваше имя</label>
+        <input type="text" id="name" placeholder="Как к вам обращаться?" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label>Удобный способ связи</label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" name="method" id="m-call" value="Звонок">
+            <label for="m-call"><span class="icon">📞</span> Звонок</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="method" id="m-tg" value="Telegram">
+            <label for="m-tg"><span class="icon">✈️</span> Telegram</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="method" id="m-wa" value="WhatsApp">
+            <label for="m-wa"><span class="icon">💬</span> WhatsApp</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-field field" id="contact-field">
+        <label id="contact-label">Номер телефона</label>
+        <input type="text" id="contact" placeholder="+7 900 000-00-00" autocomplete="off">
+      </div>
+
+      <button type="submit" class="btn-submit">
+        Получить консультацию →
+      </button>
+
+    </form>
+
+    <p class="privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+  </div>
+</div>
+
+<!-- ═══ THANK YOU PAGE ═══ -->
+<div class="page hidden" id="page-thanks">
+  <div class="thanks-card">
+    <div class="thanks-icon">✓</div>
+    <h2>Заявка<br><span>принята!</span></h2>
+    <p class="thanks-text">Спасибо, что обратились к нам. Мы получили вашу заявку и скоро свяжемся с вами.</p>
+    <div class="thanks-detail" id="thanks-summary">
+      <!-- filled by JS -->
+    </div>
+    <p class="privacy">Обычно мы отвечаем в течение 30 минут в рабочее время</p>
+  </div>
+</div>
+
+<script>
+  const form    = document.getElementById('lead-form');
+  const nameEl  = document.getElementById('name');
+  const contact = document.getElementById('contact');
+  const contactField = document.getElementById('contact-field');
+  const contactLabel = document.getElementById('contact-label');
+  const pageThanks   = document.getElementById('page-thanks');
+  const pageForm     = document.getElementById('page-form');
+  const summary      = document.getElementById('thanks-summary');
+
+  // Show/hide contact input on method select
+  const labels = {
+    'Звонок':   { label: 'Номер телефона',    placeholder: '+7 900 000-00-00' },
+    'Telegram': { label: 'Ник в Telegram',    placeholder: '@username' },
+    'WhatsApp': { label: 'Номер WhatsApp',    placeholder: '+7 900 000-00-00' },
+  };
+
+  document.querySelectorAll('input[name="method"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const cfg = labels[radio.value];
+      contactLabel.textContent = cfg.label;
+      contact.placeholder = cfg.placeholder;
+      contact.value = '';
+      contactField.classList.add('show');
+      setTimeout(() => contact.focus(), 350);
+    });
+  });
+
+  const TG_TOKEN   = '8836917344:AAHVnak9pq55cGdFx798jplmQRFvJ-kfloo';
+  const TG_CHAT_ID = '1457982464';
+
+  async function sendToTelegram(name, method, cont) {
+    const text =
+      `🔔 Новая заявка!\n\n` +
+      `👤 Имя: ${name}\n` +
+      `📲 Способ связи: ${method}\n` +
+      `📞 Контакт: ${cont}`;
+    try {
+      await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text, parse_mode: 'HTML' })
+      });
+    } catch(e) { console.error('TG error', e); }
+  }
+
+  // Submit
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const name   = nameEl.value.trim();
+    const method = document.querySelector('input[name="method"]:checked');
+    const cont   = contact.value.trim();
+
+    if (!name) { shake(nameEl); return; }
+    if (!method) { shake(document.querySelector('.radio-group')); return; }
+    if (!cont)   { shake(contact); return; }
+
+    // Send to Telegram
+    const btn = form.querySelector('.btn-submit');
+    btn.textContent = 'Отправляем...';
+    btn.disabled = true;
+    await sendToTelegram(name, method.value, cont);
+    btn.disabled = false;
+
+    // Build summary
+    summary.innerHTML = `
+      <strong>Имя:</strong> ${escHtml(name)}<br>
+      <strong>Способ связи:</strong> ${escHtml(method.value)}<br>
+      <strong>Контакт:</strong> ${escHtml(cont)}
+    `;
+
+    // Switch pages
+    pageForm.classList.add('hidden');
+    pageThanks.classList.remove('hidden');
+  });
+
+  function shake(el) {
+    el.style.animation = 'none';
+    el.offsetHeight;
+    el.style.animation = 'shake .4s ease';
+    el.addEventListener('animationend', () => el.style.animation = '', { once: true });
+    if (el.tagName === 'INPUT') {
+      el.style.borderColor = 'rgba(255,80,80,0.5)';
+      el.focus();
+      setTimeout(() => el.style.borderColor = '', 1500);
+    }
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+
+<style>
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-6px); }
+  40%     { transform: translateX(6px); }
+  60%     { transform: translateX(-4px); }
+  80%     { transform: translateX(4px); }
+}
+</style>
+</body>
+</html>
