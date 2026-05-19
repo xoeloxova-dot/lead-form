@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Устал от долгов? Бесплатный гайд</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0A0A0A;--dark2:#111;--dark3:#181818;--dark4:#1E1E1E;--border:rgba(255,255,255,0.07);--green:#BFFE00;--green2:#96CC00;--gdim:rgba(191,254,0,0.07);--gdark:#0E1500;--text:#F0F0F0;--muted:#666;--r:14px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Onest,sans-serif;min-height:100vh;position:relative;overflow-x:hidden}
+.fw{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;position:relative}
+.fw::before{content:\'\';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 60% 50% at 20% 50%,rgba(191,254,0,.04) 0%,transparent 70%);pointer-events:none}
+.fw::after{content:\'\';position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
+.page{position:relative;z-index:1;width:100%;max-width:520px}
+.page.hidden,.fw.hidden{display:none}
+.card{background:var(--dark2);border:1px solid var(--border);border-radius:24px;padding:48px 44px;position:relative;overflow:hidden;animation:fu .4s ease both}
+.card::before{content:\'\';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.steps{display:flex;align-items:center;gap:6px;justify-content:center;margin-bottom:28px}
+.sd{width:8px;height:8px;border-radius:50%;background:#222;transition:all .3s}
+.sd.active{background:var(--green);width:24px;border-radius:4px}
+.sd.done{background:var(--green2)}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--gdim);border:1px solid rgba(191,254,0,.2);color:var(--green);font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px}
+.badge::before{content:\'\';width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:Unbounded,sans-serif;font-size:clamp(22px,4vw,28px);font-weight:900;line-height:1.15;letter-spacing:-.5px;margin-bottom:10px}
+h1 span{color:var(--green)}
+.sub{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:32px}
+.field{margin-bottom:18px}
+label{display:block;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+input[type=text]{width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:15px;font-family:Onest,sans-serif;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+input[type=text]::placeholder{color:#3a3a3a}
+input[type=text]:focus{border-color:rgba(191,254,0,.4);box-shadow:0 0 0 3px rgba(191,254,0,.06)}
+.rg{display:flex;gap:10px;flex-wrap:wrap}
+.ro{flex:1;min-width:100px;position:relative}
+.ro input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.ro label{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:13px 16px;cursor:pointer;font-size:13px;font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;margin:0;transition:all .2s;user-select:none;white-space:nowrap}
+.ro input:checked+label{background:var(--gdim);border-color:rgba(191,254,0,.4);color:var(--green)}
+.ro label:hover{border-color:rgba(255,255,255,.15);color:var(--text)}
+.cf{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease,margin .3s ease;margin-bottom:0}
+.cf.show{max-height:90px;opacity:1;margin-bottom:18px}
+.btn{width:100%;background:var(--green);color:#000;font-family:Unbounded,sans-serif;font-size:14px;font-weight:700;padding:16px;border:none;border-radius:var(--r);cursor:pointer;transition:opacity .2s,transform .1s;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{opacity:.88}
+.btn:active{transform:scale(.99)}
+.btng{width:100%;background:var(--green);color:#000;font-family:Unbounded,sans-serif;font-size:15px;font-weight:900;padding:20px;border:none;border-radius:var(--r);cursor:pointer;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center;gap:10px;animation:pb 2s infinite}
+.btng:hover{opacity:.9;transform:scale(1.02)}
+@keyframes pb{0%,100%{box-shadow:0 0 0 0 rgba(191,254,0,.4)}50%{box-shadow:0 0 0 12px rgba(191,254,0,0)}}
+.priv{font-size:11px;color:#333;text-align:center;margin-top:14px;line-height:1.6}
+.ti{width:72px;height:72px;background:var(--gdim);border:1px solid rgba(191,254,0,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 24px;animation:pi .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pi{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.tt{font-family:Unbounded,sans-serif;font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:10px;text-align:center}
+.tt span{color:var(--green)}
+.ts{font-size:14px;color:var(--muted);line-height:1.6;text-align:center;margin-bottom:28px}
+
+/* GUIDE */
+#pg{display:none}
+.gh{background:var(--dark2);border-bottom:1px solid var(--border);padding:16px 24px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between}
+.glogo{font-family:Unbounded,sans-serif;font-size:15px;font-weight:900;color:var(--green)}
+.gw{max-width:680px;margin:0 auto;padding:32px 24px 80px}
+.gcov{background:var(--dark2);border:1px solid var(--border);border-radius:20px;padding:32px 28px;margin-bottom:36px;position:relative;overflow:hidden}
+.gcov::before{content:\'\';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.gtag{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--green);margin-bottom:14px}
+.gmt{font-family:Unbounded,sans-serif;font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.1;letter-spacing:-.5px;margin-bottom:10px}
+.gmt span{color:var(--green)}
+.gms{font-size:14px;color:var(--muted);margin-bottom:20px}
+.gtoc{display:flex;flex-direction:column;gap:8px}
+.gti{display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--dark3);border-radius:10px;font-size:13px;color:var(--text)}
+.gtn{font-family:Unbounded,sans-serif;font-size:11px;color:var(--green);min-width:22px}
+.gs{margin-bottom:44px}
+.gsh{background:var(--dark3);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;border-left:4px solid var(--green)}
+.gn{width:30px;height:30px;background:var(--gdark);border:1px solid var(--green2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:Unbounded,sans-serif;font-size:11px;color:var(--green);flex-shrink:0}
+.gtit{font-family:Unbounded,sans-serif;font-size:17px;font-weight:700;color:var(--text)}
+.gsub2{font-size:11px;color:var(--muted);margin-top:2px}
+.gt{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.gh2{font-size:12px;font-weight:600;color:var(--green2);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;margin-top:18px}
+.gc{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.gci{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;background:var(--dark3);border:1px solid var(--border);border-radius:11px}
+.gcb{width:18px;height:18px;border:1.5px solid #333;border-radius:4px;flex-shrink:0;margin-top:2px}
+.cit{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.cis{font-size:12px;color:var(--muted)}
+.ginfo{border-radius:12px;padding:14px 16px;margin-bottom:14px;border-left:3px solid}
+.ginfo.y{background:#1A1500;border-color:#CC8800}
+.ginfo.y .git{color:#FFB700}
+.ginfo.r{background:#1A0000;border-color:#CC3333}
+.ginfo.r .git{color:#FF6666}
+.ginfo.g{background:var(--gdark);border-color:var(--green2)}
+.ginfo.g .git{color:var(--green2)}
+.git{font-size:11px;font-weight:700;margin-bottom:7px;text-transform:uppercase;letter-spacing:1px}
+.ginfo ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+.ginfo ul li{font-size:13px;color:var(--text);line-height:1.5;padding-left:14px;position:relative}
+.ginfo ul li::before{content:"→";position:absolute;left:0;opacity:.6}
+.gtab{width:100%;border-collapse:collapse;margin-bottom:14px}
+.gtab th{text-align:left;padding:9px 12px;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);background:var(--dark4)}
+.gtab td{padding:11px 12px;font-size:13px;border-top:1px solid var(--border);color:var(--text)}
+.gtab tr:nth-child(even) td{background:var(--dark3)}
+.gtab .gn2{color:var(--green2);font-weight:600}
+.gtab .rd{color:#FF6666}
+.gsteps{display:flex;flex-direction:column;gap:0;margin-bottom:14px}
+.gstep{display:flex;gap:12px;padding:13px 14px;background:var(--dark3);border:1px solid var(--border);position:relative}
+.gstep:first-child{border-radius:12px 12px 0 0}
+.gstep:last-child{border-radius:0 0 12px 12px}
+.gstep:not(:last-child)::after{content:"↓";position:absolute;left:22px;bottom:-13px;z-index:1;color:var(--green);font-size:12px;font-weight:700}
+.gsn{width:26px;height:26px;border-radius:7px;background:var(--gdark);border:1px solid var(--green2);display:flex;align-items:center;justify-content:center;font-family:Unbounded,sans-serif;font-size:11px;color:var(--green);flex-shrink:0}
+.gst{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.gsd{font-size:12px;color:var(--muted)}
+.gdiv{height:1px;background:var(--border);margin:36px 0}
+.gcta{background:var(--green);border-radius:16px;padding:28px;text-align:center;margin-top:36px}
+.gctat{font-family:Unbounded,sans-serif;font-size:17px;font-weight:900;color:#000;margin-bottom:8px}
+.gctas{font-size:13px;color:#1A2200;margin-bottom:16px}
+.gctab{display:inline-block;background:#000;color:var(--green);font-family:Unbounded,sans-serif;font-size:13px;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;cursor:pointer;border:none}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@media(max-width:480px){.card{padding:32px 20px}.ro label{padding:11px 10px;font-size:12px}.gcov{padding:22px 16px}}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: FORM -->
+<div class="fw" id="wf">
+<div class="page">
+<div class="card">
+  <div class="steps"><div class="sd active"></div><div class="sd"></div><div class="sd"></div></div>
+  <div class="badge">Бесплатный гайд</div>
+  <h1>Устал от долгов?<br><span>Гайд который поможет</span></h1>
+  <p class="sub">Оставь контакт — получи бесплатный гайд: кредитные каникулы, списание долгов, банкротство и защита от коллекторов.</p>
+  <form id="lf" novalidate>
+    <div class="field"><label>Ваше имя</label><input type="text" id="nm" placeholder="Как к вам обращаться?" autocomplete="off"></div>
+    <div class="field">
+      <label>Удобный способ связи</label>
+      <div class="rg">
+        <div class="ro"><input type="radio" name="m" id="mc" value="Звонок"><label for="mc">📞 Звонок</label></div>
+        <div class="ro"><input type="radio" name="m" id="mt" value="Telegram"><label for="mt">✈️ Telegram</label></div>
+        <div class="ro"><input type="radio" name="m" id="mw" value="WhatsApp"><label for="mw">💬 WhatsApp</label></div>
+      </div>
+    </div>
+    <div class="cf field" id="cf"><label id="cl">Номер телефона</label><input type="text" id="ct" placeholder="+7 900 000-00-00" autocomplete="off"></div>
+    <button type="submit" class="btn">Получить гайд бесплатно →</button>
+  </form>
+  <p class="priv">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+</div>
+</div>
+</div>
+
+<!-- PAGE 2: THANKS -->
+<div class="fw hidden" id="wt">
+<div class="page">
+<div class="card" style="text-align:center">
+  <div class="steps"><div class="sd done"></div><div class="sd active"></div><div class="sd"></div></div>
+  <div class="ti">✓</div>
+  <div class="tt">Заявка<br><span>принята!</span></div>
+  <p class="ts">Свяжемся с вами в ближайшее время.<br>А пока — забирайте гайд прямо сейчас!</p>
+  <button class="btng" onclick="goGuide()">Забрать гайд 🎁</button>
+</div>
+</div>
+</div>
+
+<!-- PAGE 3: GUIDE -->
+<div id="pg">
+  <div class="gh">
+    <div class="glogo">РЛБ <span style="font-size:11px;color:var(--muted);font-family:Onest,sans-serif;font-weight:400;margin-left:8px">× Бесплатный гайд</span></div>
+    <div class="steps" style="margin:0"><div class="sd done"></div><div class="sd done"></div><div class="sd active"></div></div>
+  </div>
+  <div class="gw">
+    <div class="gcov">
+      <div class="gtag">Бесплатный гайд · 2025</div>
+      <div class="gmt">Устал<br>от долгов?<br><span>Вот выход.</span></div>
+      <p class="gms">Кредитные каникулы · Списание долгов · Банкротство · Коллекторы</p>
+      <div class="gtoc">
+        <div class="gti"><span class="gtn">01</span>Кредитные каникулы — кто получит</div>
+        <div class="gti"><span class="gtn">02</span>Списание долгов через МФЦ — бесплатно</div>
+        <div class="gti"><span class="gtn">03</span>Банкротство — всё что нужно знать</div>
+        <div class="gti"><span class="gtn">04</span>Коллекторы — ваши права по закону</div>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="gs">
+      <div class="gsh"><div class="gn">01</div><div><div class="gtit">Кредитные каникулы</div><div class="gsub2">Закон № 348-ФЗ · С 01.01.2024 · Постоянно</div></div></div>
+      <p class="gt">Право заёмщика приостановить платежи или снизить их размер на срок до 6 месяцев. Банк <strong>обязан</strong> предоставить их — отказать незаконно.</p>
+      <div class="ginfo y"><div class="git">⚠ Важно знать</div><ul><li>Каникулы — не прощение долга. Платежи сдвигаются на конец срока.</li><li>Проценты продолжают начисляться в льготный период.</li><li>В кредитной истории остаётся отметка, но НЕ ухудшает рейтинг.</li><li>Можно взять 1 раз по каждому кредиту.</li></ul></div>
+      <div class="gh2">Лимиты кредитов в 2025 году</div>
+      <table class="gtab"><tr><th>Тип кредита</th><th>Максимальная сумма</th></tr><tr><td>Потребительский кредит</td><td class="gn2">до 450 000 ₽</td></tr><tr><td>Автокредит</td><td class="gn2">до 1 600 000 ₽</td></tr><tr><td>Ипотека</td><td class="gn2">до 15 000 000 ₽</td></tr><tr><td>Кредитная карта</td><td class="gn2">до 150 000 ₽</td></tr></table>
+      <div class="gh2">Основания для получения</div>
+      <div class="gc"><div class="gci"><div class="gcb"></div><div><div class="cit">Доход снизился на 30%+</div><div class="cis">Последние 2 месяца vs предыдущий год</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">Потеря работы</div><div class="cis">Постановка на учёт в центр занятости (ЦЗН)</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">Нетрудоспособность 2+ мес.</div><div class="cis">Больничный лист, травма, болезнь</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">Инвалидность I или II группы</div><div class="cis">Оформленная впервые в период кредита</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">Рождение ребёнка / декрет</div><div class="cis">Или уход за ребёнком-инвалидом</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">Чрезвычайная ситуация</div><div class="cis">Пожар, наводнение, стихийное бедствие</div></div></div></div>
+      <div class="gh2">Как оформить</div>
+      <div class="gsteps"><div class="gstep"><div class="gsn">1</div><div><div class="gst">Подать заявление в банк / МФО</div><div class="gsd">Лично, онлайн или по телефону. Дату начала выбираете сами.</div></div></div><div class="gstep"><div class="gsn">2</div><div><div class="gst">Приложить документы</div><div class="gsd">Справка о доходах, больничный, справка из ЦЗН — по основанию.</div></div></div><div class="gstep"><div class="gsn">✓</div><div><div class="gst">Ждать 5 рабочих дней</div><div class="gsd">Банк обязан ответить. Незаконный отказ — жалоба в Банк России.</div></div></div></div>
+    </div>
+    <div class="gdiv"></div>
+
+    <!-- 02 -->
+    <div class="gs">
+      <div class="gsh"><div class="gn">02</div><div><div class="gtit">Списание долгов через МФЦ</div><div class="gsub2">Закон № 127-ФЗ · Бесплатно · 6 месяцев</div></div></div>
+      <p class="gt">Упрощённое банкротство через МФЦ — государственная услуга без суда и без оплаты. С 2025 года СФР сам проверяет ваши счета — справки собирать не нужно.</p>
+      <div class="gh2">Условия — нужно выполнить ВСЕ</div>
+      <div class="gc"><div class="gci"><div class="gcb"></div><div><div class="cit">Сумма долга: 25 000 — 1 000 000 ₽</div><div class="cis">По кредитам, займам МФО, распискам, ЖКХ</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">Исполнительное производство окончено</div><div class="cis">Приставы закрыли дело — нет имущества для взыскания</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">Нет новых производств после закрытия</div><div class="cis">Пристав снял все аресты и закрыл дело</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">ИЛИ: только пенсия / пособие</div><div class="cis">И исполнительный лист не исполнен 12+ мес.</div></div></div></div>
+      <div class="gh2">Пошаговая инструкция</div>
+      <div class="gsteps"><div class="gstep"><div class="gsn">1</div><div><div class="gst">Проверить долги у приставов</div><div class="gsd">Сайт ФССП. Убедитесь что производство закрыто.</div></div></div><div class="gstep"><div class="gsn">2</div><div><div class="gst">Составить список всех кредиторов</div><div class="gsd">ФИО/название, ИНН, сумма. Нельзя пропустить ни одного!</div></div></div><div class="gstep"><div class="gsn">3</div><div><div class="gst">Подать заявление в МФЦ</div><div class="gsd">По месту жительства. Бесплатно. Справки МФЦ запросит сам.</div></div></div><div class="gstep"><div class="gsn">4</div><div><div class="gst">Ждать 6 месяцев</div><div class="gsd">МФЦ публикует сведения в ЕФРСБ. Кредиторы могут возразить.</div></div></div><div class="gstep"><div class="gsn">✓</div><div><div class="gst">Долги списаны</div><div class="gsd">МФЦ выдаёт документ. Долги прекращают существовать.</div></div></div></div>
+      <div class="ginfo r"><div class="git">✗ Что НЕ списывается</div><ul><li>Алименты и задолженность по ним</li><li>Возмещение вреда жизни и здоровью</li><li>Долги, скрытые от МФЦ (не включённые в список)</li><li>Текущие платежи ЖКХ после подачи заявления</li></ul></div>
+    </div>
+    <div class="gdiv"></div>
+
+    <!-- 03 -->
+    <div class="gs">
+      <div class="gsh"><div class="gn">03</div><div><div class="gtit">Банкротство через суд</div><div class="gsub2">Закон № 127-ФЗ · Обязательно при долге 500 000+ ₽</div></div></div>
+      <p class="gt">Позволяет списать любую сумму долга. Средний срок — 12–14 месяцев.</p>
+      <div class="gh2">Кто и когда подаёт</div>
+      <div class="gc"><div class="gci"><div class="gcb"></div><div><div class="cit">ОБЯЗАН: долг 500 000+ ₽</div><div class="cis">Просрочка 3+ месяца. Срок подачи — 30 дней!</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">ВПРАВЕ: долг от 300 000 ₽</div><div class="cis">Понимаете, что не сможете погасить долг</div></div></div><div class="gci"><div class="gcb"></div><div><div class="cit">ВПРАВЕ: любая сумма</div><div class="cis">Если стоимость имущества меньше суммы долгов</div></div></div></div>
+      <div class="gh2">Стоимость в 2025 году</div>
+      <table class="gtab"><tr><th>Расход</th><th>Сумма</th></tr><tr><td>Госпошлина (должник подаёт сам)</td><td class="gn2">0 ₽ — освобождён</td></tr><tr><td>Финансовый управляющий</td><td>от 25 000 ₽</td></tr><tr><td>Публикации в ЕФРСБ и Коммерсанте</td><td>от 15 000 ₽</td></tr><tr><td>Услуги юриста (опционально)</td><td>от 40 000 ₽</td></tr></table>
+      <div class="gh2">Что происходит с имуществом</div>
+      <table class="gtab"><tr><th>Имущество</th><th>Статус</th></tr><tr><td>Единственное жильё (не ипотека)</td><td class="gn2">✓ Не забирают</td></tr><tr><td>Личные вещи и одежда</td><td class="gn2">✓ Не забирают</td></tr><tr><td>Деньги — прожиточный минимум</td><td class="gn2">✓ Не забирают</td></tr><tr><td>Автомобиль</td><td class="rd">✗ Могут забрать</td></tr><tr><td>Вклады сверх прожиточного минимума</td><td class="rd">✗ Могут забрать</td></tr><tr><td>Ипотечная квартира</td><td class="rd">✗ Могут забрать</td></tr></table>
+      <div class="ginfo y"><div class="git">Последствия банкротства</div><ul><li>5 лет — при получении кредитов сообщать о банкротстве</li><li>5 лет — нельзя повторно проходить банкротство</li><li>3 года — нельзя занимать руководящие должности</li><li>Коллекторы теряют право звонить после подачи заявления</li></ul></div>
+    </div>
+    <div class="gdiv"></div>
+
+    <!-- 04 -->
+    <div class="gs">
+      <div class="gsh"><div class="gn">04</div><div><div class="gtit">Коллекторы — ваши права</div><div class="gsub2">ФЗ № 230-ФЗ + поправки с 01.02.2025</div></div></div>
+      <p class="gt">Закон строго ограничивает взыскателей. Нарушения — штраф 50–500 тыс. ₽, вплоть до лишения лицензии.</p>
+      <div class="gh2">Лимиты контактов по закону</div>
+      <table class="gtab"><tr><th>Тип контакта</th><th>Ограничение</th></tr><tr><td>Звонки</td><td>1 в сутки / 2 в неделю / 8 в месяц</td></tr><tr><td>Личные встречи</td><td>не более 1 раза в неделю</td></tr><tr><td>SMS и сообщения</td><td>2 в сутки / 4 в неделю / 16 в месяц</td></tr><tr><td>Время звонков (будни)</td><td>08:00 — 22:00</td></tr><tr><td>Время звонков (выходные)</td><td>09:00 — 20:00</td></tr></table>
+      <div class="ginfo r"><div class="git">✗ Что запрещено коллекторам</div><ul><li>Звонить со скрытых номеров (с 01.09.2025 — только с зарегистрированных)</li><li>Угрожать физической расправой (ст. 119 УК РФ)</li><li>Оскорблять и унижать должника</li><li>Общаться с родственниками без письменного согласия</li><li>Разглашать информацию о долге третьим лицам</li><li>Тревожить при открытом банкротстве</li></ul></div>
+      <div class="ginfo g"><div class="git">✓ Через 4 месяца с первой просрочки</div><ul><li>Вправе написать отказ от взаимодействия (нотариус или заказное письмо)</li><li>После этого коллекторы — только через суд или заказные письма</li><li>Шаблон заявления — ст. 8 ФЗ № 230-ФЗ</li></ul></div>
+      <div class="ginfo g"><div class="git">Куда жаловаться на нарушения</div><ul><li>ФССП (fssprus.ru) — основной контролёр, штрафует и лишает лицензии</li><li>Банк России (cbr.ru) — если нарушает банк или МФО</li><li>Роскомнадзор — если разглашают персональные данные</li><li>Прокуратура — при угрозах и физическом давлении</li></ul></div>
+    </div>
+
+    <div class="gcta">
+      <div class="gctat">Нужна помощь с долгами?</div>
+      <div class="gctas">Разберём вашу ситуацию — бесплатно</div>
+      <button class="gctab" onclick="restart()">Получить консультацию →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TK='8836917344:AAHVnak9pq55cGdFx798jplmQRFvJ-kfloo',TC='1457982464';
+const LB={'Звонок':{l:'Номер телефона',p:'+7 900 000-00-00'},'Telegram':{l:'Ник в Telegram',p:'@username'},'WhatsApp':{l:'Номер WhatsApp',p:'+7 900 000-00-00'}};
+document.querySelectorAll('input[name=m]').forEach(r=>{r.addEventListener('change',()=>{const c=LB[r.value];document.getElementById('cl').textContent=c.l;document.getElementById('ct').placeholder=c.p;document.getElementById('ct').value='';document.getElementById('cf').classList.add('show');setTimeout(()=>document.getElementById('ct').focus(),350)})});
+async function tg(n,m,c){try{await fetch(`https://api.telegram.org/bot${TK}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC,text:`🔔 Новая заявка!
+
+👤 Имя: ${n}
+📲 Способ связи: ${m}
+📞 Контакт: ${c}`})})}catch(e){}}
+document.getElementById('lf').addEventListener('submit',async e=>{e.preventDefault();const n=document.getElementById('nm').value.trim(),m=document.querySelector('input[name=m]:checked'),c=document.getElementById('ct').value.trim();if(!n){sh(document.getElementById('nm'));return}if(!m){sh(document.querySelector('.rg'));return}if(!c){sh(document.getElementById('ct'));return}const b=e.target.querySelector('.btn');b.textContent='Отправляем...';b.disabled=true;await tg(n,m.value,c);document.getElementById('wf').classList.add('hidden');document.getElementById('wt').classList.remove('hidden')});
+function goGuide(){document.getElementById('wt').classList.add('hidden');document.getElementById('pg').style.display='block';window.scrollTo(0,0)}
+function restart(){document.getElementById('pg').style.display='none';document.getElementById('wf').classList.remove('hidden');window.scrollTo(0,0)}
+function sh(el){el.style.animation='none';el.offsetHeight;el.style.animation='shake .4s ease';el.addEventListener('animationend',()=>el.style.animation='',{once:true});if(el.tagName==='INPUT'){el.style.borderColor='rgba(255,80,80,0.5)';el.focus();setTimeout(()=>el.style.borderColor='',1500)}}
+</script>
+</body>
+</html>
